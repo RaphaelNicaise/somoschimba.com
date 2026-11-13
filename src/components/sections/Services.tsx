@@ -40,18 +40,6 @@ export function Services() {
             Así trabajamos en <span className="ch-mark">Chimba</span>.
           </p>
         </div>
-
-        {/* Trazo orgánico de la hoja característico de Chimba */}
-        <div style={{ opacity: 0.85 }}>
-          <Image
-            src="/assets/Shapes/leaf-outline-blue.webp"
-            alt=""
-            width={110}
-            height={110}
-            unoptimized
-            aria-hidden="true"
-          />
-        </div>
       </div>
 
       <div
@@ -61,92 +49,127 @@ export function Services() {
           gap: "24px",
         }}
       >
-        {SERVICES.map((s) => (
-          <div
-            key={s.id}
-            style={{
-              background: "var(--white)",
-              padding: "48px 36px",
-              boxShadow: "var(--shadow-card)",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <div>
-              <span
-                style={{
-                  fontFamily: "var(--font-sans)",
-                  fontSize: "13px",
-                  fontWeight: 800,
-                  letterSpacing: "0.14em",
-                  color: "var(--chimba-blue)",
-                }}
-              >
-                {s.number}
-              </span>
-              <h3
-                style={{
-                  fontSize: "26px",
-                  fontWeight: 800,
-                  color: "var(--chimba-blue)",
-                  margin: "18px 0 12px",
-                  letterSpacing: "-0.02em",
-                }}
-              >
-                {s.name}
-              </h3>
-              <p
-                style={{
-                  fontSize: "15px",
-                  color: "var(--ink)",
-                  lineHeight: 1.45,
-                  margin: "0 0 28px",
-                }}
-              >
-                {s.tagline}
-              </p>
-            </div>
+        {SERVICES.map((s, index) => {
+          // Alternar entre hoja azul y hoja verde
+          const isGreenLeaf = index % 2 === 1;
+          const leafSrc = isGreenLeaf
+            ? "/assets/Shapes/leaf-outline-green.webp"
+            : "/assets/Shapes/leaf-outline-blue.webp";
 
-            <ul
+          return (
+            <div
+              key={s.id}
+              className="ch-service-card"
               style={{
-                listStyle: "none",
-                padding: 0,
-                margin: 0,
-                borderTop: "1px solid var(--surface)",
-                paddingTop: "24px",
+                background: "var(--white)",
+                padding: "44px 36px",
+                border: "1px solid rgba(43, 73, 145, 0.12)",
+                boxShadow: "var(--shadow-card)",
                 display: "flex",
                 flexDirection: "column",
-                gap: "10px",
+                justifyContent: "space-between",
+                position: "relative",
               }}
             >
-              {s.details.map((item) => (
-                <li
-                  key={item}
+              {/* Micro-adorno orgánico de la hoja en esquina superior derecha */}
+              <div
+                className="ch-service-leaf"
+                style={{
+                  position: "absolute",
+                  top: "24px",
+                  right: "24px",
+                  opacity: 0.75,
+                  pointerEvents: "none",
+                }}
+              >
+                <Image
+                  src={leafSrc}
+                  alt=""
+                  width={54}
+                  height={54}
+                  unoptimized
+                  aria-hidden="true"
+                />
+              </div>
+
+              <div>
+                <span
+                  className="ch-service-number"
                   style={{
+                    fontFamily: "var(--font-sans)",
                     fontSize: "14px",
-                    fontWeight: 500,
-                    color: "var(--ink-muted)",
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "8px",
+                    fontWeight: 800,
+                    letterSpacing: "0.14em",
+                    color: "var(--chimba-blue)",
                   }}
                 >
-                  <span
+                  {s.number}
+                </span>
+
+                <h3
+                  style={{
+                    fontSize: "26px",
+                    fontWeight: 800,
+                    color: "var(--chimba-blue)",
+                    margin: "18px 0 12px",
+                    letterSpacing: "-0.02em",
+                  }}
+                >
+                  {s.name}
+                </h3>
+
+                <p
+                  style={{
+                    fontSize: "15px",
+                    color: "var(--ink)",
+                    lineHeight: 1.45,
+                    margin: "0 0 28px",
+                  }}
+                >
+                  {s.tagline}
+                </p>
+              </div>
+
+              <ul
+                style={{
+                  listStyle: "none",
+                  padding: 0,
+                  margin: 0,
+                  borderTop: "1px solid var(--surface)",
+                  paddingTop: "24px",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                }}
+              >
+                {s.details.map((item) => (
+                  <li
+                    key={item}
                     style={{
-                      width: "5px",
-                      height: "5px",
-                      backgroundColor: "var(--chimba-blue)",
-                      display: "inline-block",
-                      flexShrink: 0,
+                      fontSize: "14px",
+                      fontWeight: 500,
+                      color: "var(--ink-muted)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
                     }}
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+                  >
+                    <span
+                      style={{
+                        width: "5px",
+                        height: "5px",
+                        backgroundColor: isGreenLeaf ? "var(--chimba-green)" : "var(--chimba-blue)",
+                        display: "inline-block",
+                        flexShrink: 0,
+                      }}
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </div>
     </section>
   );

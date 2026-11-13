@@ -6,9 +6,10 @@ export const NAV_LINKS = [
 ];
 
 export const AGENCY_INFO = {
+  name: "Chimba",
+  tagline: "Creative Agency",
   email: "hola@somoschimba.com",
   instagram: "https://instagram.com/somoschimba",
   whatsapp: "https://wa.me/5491100000000",
-  year: "2025/2026",
   city: "Buenos Aires, Argentina",
 };

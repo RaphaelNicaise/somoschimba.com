@@ -3,13 +3,9 @@ import { HandshakeSticker } from "@/components/ui/HandshakeSticker";
 
 interface StatementProps {
   id?: string;
-  clientName?: string;
 }
 
-export function Statement({
-  id = "manifiesto",
-  clientName = "Ferrocargas",
-}: StatementProps) {
+export function Statement({ id = "manifiesto" }: StatementProps) {
   return (
     <section id={id} className="ch-statement" style={{ padding: "120px 48px" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -18,18 +14,15 @@ export function Statement({
           <span className="ch-mark">la gente las elija</span>.
         </p>
 
-        <div className="ch-statement__sign" style={{ marginTop: "64px" }}>
-          <span
-            style={{
-              fontFamily: "var(--font-sans)",
-              fontWeight: 800,
-              fontSize: "24px",
-              letterSpacing: "-0.02em",
-              color: "var(--chimba-blue)",
-            }}
-          >
-            {clientName}
-          </span>
+        <div
+          className="ch-statement__sign"
+          style={{
+            marginTop: "64px",
+            display: "flex",
+            alignItems: "center",
+            gap: "20px",
+          }}
+        >
           <HandshakeSticker size="sm" />
           <Image
             src="/assets/Logos/chimba-wordmark.webp"
@@ -40,6 +33,17 @@ export function Statement({
             unoptimized
             style={{ objectFit: "contain", height: "32px", width: "auto" }}
           />
+          <span
+            style={{
+              fontStyle: "italic",
+              fontWeight: 300,
+              fontSize: "15px",
+              color: "var(--ink-muted)",
+              letterSpacing: "-0.01em",
+            }}
+          >
+            Creative Agency
+          </span>
         </div>
       </div>
     </section>

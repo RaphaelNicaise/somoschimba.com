@@ -7,7 +7,7 @@ export function Hero() {
         className="ch-hero__photo"
         style={{ backgroundImage: "url(/assets/References/cover-photo-blur.webp)" }}
       />
-      <div className="ch-hero__body" style={{ width: "100%", maxWidth: "1100px", paddingBottom: "64px" }}>
+      <div className="ch-hero__body" style={{ width: "100%", maxWidth: "1100px", paddingBottom: "72px" }}>
         <h1 className="ch-hero__title">
           Así
           <br />
@@ -16,7 +16,7 @@ export function Hero() {
         </h1>
         <div className="ch-hero__rule" />
         <p className="ch-hero__client">
-          Santarelli <em>Construcciones</em>
+          Chimba <em>Creative Agency</em>
         </p>
       </div>
     </section>

@@ -28,7 +28,7 @@ export function Footer() {
           </div>
 
           <div style={{ color: "rgba(255, 255, 255, 0.7)", fontStyle: "italic", fontWeight: 300 }}>
-            Chimba — Creative Agency · {AGENCY_INFO.year}
+            Chimba — Creative Agency
           </div>
         </div>
       </div>

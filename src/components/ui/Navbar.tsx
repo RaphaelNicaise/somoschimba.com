@@ -15,7 +15,7 @@ export function Navbar({ floating = true }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 80);
+      setIsScrolled(window.scrollY > 60);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -29,46 +29,63 @@ export function Navbar({ floating = true }: NavbarProps) {
         left: 0,
         right: 0,
         zIndex: 50,
-        transition: "background-color 0.25s ease, backdrop-filter 0.25s ease, border-color 0.25s ease",
-        backgroundColor: isScrolled ? "rgba(228, 228, 228, 0.94)" : "transparent",
-        backdropFilter: isScrolled ? "blur(12px)" : "none",
+        transition: "background-color 0.25s ease, backdrop-filter 0.25s ease, border-color 0.25s ease, padding 0.2s ease",
+        backgroundColor: isScrolled ? "rgba(228, 228, 228, 0.92)" : "transparent",
+        backdropFilter: isScrolled ? "blur(16px)" : "none",
         borderBottom: isScrolled ? "1px solid rgba(43, 73, 145, 0.12)" : "1px solid transparent",
       }}
     >
       <nav
-        className={`ch-nav ${!isScrolled ? "ch-nav--photo" : ""}`}
         style={{
           maxWidth: "1400px",
           margin: "0 auto",
-          padding: "20px 24px",
+          padding: isScrolled ? "14px 32px" : "24px 32px",
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
+          transition: "padding 0.2s ease",
         }}
       >
+        {/* Brand con óvalo a mano animado en hover */}
         <Link
           href="/"
-          className="ch-nav__brand"
-          style={{ textDecoration: "none", display: "inline-flex", alignItems: "center" }}
+          className="ch-logo-scribble-container"
+          style={{ textDecoration: "none" }}
+          aria-label="Chimba Creative Agency"
         >
+          {/* SVG Óvalo con trazo a mano que se dibuja al hacer hover */}
+          <svg
+            className="ch-logo-scribble-svg"
+            viewBox="0 0 140 60"
+            fill="none"
+            aria-hidden="true"
+          >
+            {/* Trazo orgánico irregular tipo lápiz */}
+            <path
+              className="ch-scribble-path"
+              d="M 18,31 C 15,14 42,9 76,9 C 114,9 133,18 132,32 C 131,46 102,52 64,51 C 24,50 9,43 12,28 C 14,19 32,13 54,12"
+            />
+          </svg>
+
           {isScrolled ? (
             <Image
               src="/assets/Logos/chimba-wordmark.webp"
               alt="Chimba"
-              width={112}
-              height={36}
+              width={105}
+              height={32}
               unoptimized
-              style={{ objectFit: "contain", height: "30px", width: "auto" }}
+              style={{ objectFit: "contain", height: "26px", width: "auto", display: "block" }}
             />
           ) : (
             <span
               style={{
                 fontFamily: "var(--font-sans)",
                 fontWeight: 800,
-                fontSize: "30px",
+                fontSize: "28px",
                 letterSpacing: "-0.04em",
                 color: "var(--chimba-green)",
                 lineHeight: 1,
+                display: "inline-block",
               }}
             >
               Chimba
@@ -76,14 +93,14 @@ export function Navbar({ floating = true }: NavbarProps) {
           )}
         </Link>
 
-        {/* Desktop Links */}
+        {/* Links Minimalistas de Centro */}
         <div
+          className="nav-desktop-links"
           style={{
             display: "flex",
-            gap: "32px",
+            gap: "36px",
             alignItems: "center",
           }}
-          className="nav-desktop-links"
         >
           {NAV_LINKS.map((link) => (
             <a
@@ -97,8 +114,9 @@ export function Navbar({ floating = true }: NavbarProps) {
                 textTransform: "uppercase",
                 textDecoration: "none",
                 color: isScrolled ? "var(--chimba-blue)" : "var(--white)",
-                transition: "opacity 0.15s ease",
-                opacity: 0.9,
+                transition: "color 0.15s ease, opacity 0.15s ease",
+                opacity: isScrolled ? 0.9 : 0.85,
+                position: "relative",
               }}
             >
               {link.label}
@@ -106,24 +124,35 @@ export function Navbar({ floating = true }: NavbarProps) {
           ))}
         </div>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-          <span
-            className="ch-nav__meta"
+        {/* Acciones de la derecha */}
+        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+          <a
+            href="#contacto"
+            className="nav-cta-btn"
             style={{
-              fontStyle: "italic",
-              fontWeight: 300,
-              fontSize: "14px",
-              color: isScrolled ? "var(--ink-muted)" : "rgba(255, 255, 255, 0.75)",
+              fontFamily: "var(--font-sans)",
+              fontWeight: 800,
+              fontSize: "12px",
+              letterSpacing: "0.1em",
+              textTransform: "uppercase",
+              textDecoration: "none",
+              padding: "10px 20px",
+              background: isScrolled ? "var(--chimba-blue)" : "var(--chimba-green)",
+              color: isScrolled ? "var(--white)" : "var(--chimba-blue)",
+              border: "none",
+              transition: "transform 0.15s ease, background-color 0.15s ease, color 0.15s ease",
+              display: "inline-flex",
+              alignItems: "center",
             }}
           >
-            {AGENCY_INFO.year}
-          </span>
+            Hablemos
+          </a>
 
-          {/* Mobile menu toggle */}
+          {/* Botón menú mobile */}
           <button
             type="button"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
+            aria-label="Abrir menú"
             className="nav-mobile-toggle"
             style={{
               display: "none",
@@ -143,7 +172,7 @@ export function Navbar({ floating = true }: NavbarProps) {
         </div>
       </nav>
 
-      {/* Mobile Drawer */}
+      {/* Drawer mobile */}
       {menuOpen && (
         <div
           style={{
@@ -162,7 +191,7 @@ export function Navbar({ floating = true }: NavbarProps) {
               onClick={() => setMenuOpen(false)}
               style={{
                 color: "var(--white)",
-                fontSize: "24px",
+                fontSize: "22px",
                 fontWeight: 800,
                 textDecoration: "none",
                 letterSpacing: "-0.02em",
