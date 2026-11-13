@@ -1,56 +1,39 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Lenis from "lenis";
 
+/** Scroll suave con Lenis. Queda en window.lenis para frenarlo al abrir un caso. */
 export function SmoothScroll({ children }: { children: React.ReactNode }) {
-  const lenisRef = useRef<Lenis | null>(null);
-
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      wheelMultiplier: 0.95,
-      touchMultiplier: 1.6,
-      infinite: false,
-    });
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    lenisRef.current = lenis;
+    const lenis = new Lenis({ lerp: 0.085, wheelMultiplier: 0.9, touchMultiplier: 1.4 });
+    (window as unknown as { lenis?: Lenis }).lenis = lenis;
 
-    function raf(time: number) {
+    let rafId = 0;
+    const raf = (time: number) => {
       lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    const rafId = requestAnimationFrame(raf);
-
-    // Suavizar todos los clicks en enlaces con ancla interna (#)
-    const handleAnchorClick = (e: MouseEvent) => {
-      const target = (e.target as HTMLElement).closest("a");
-      if (!target) return;
-
-      const href = target.getAttribute("href");
-      if (href && href.startsWith("#") && href.length > 1) {
-        const element = document.querySelector(href);
-        if (element) {
-          e.preventDefault();
-          lenis.scrollTo(element as HTMLElement, {
-            offset: -30,
-            duration: 1.2,
-          });
-        }
-      }
+      rafId = requestAnimationFrame(raf);
     };
+    rafId = requestAnimationFrame(raf);
 
-    document.addEventListener("click", handleAnchorClick);
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement).closest("a");
+      const href = a?.getAttribute("href");
+      if (!href || !href.startsWith("#") || href.length < 2) return;
+      const el = document.querySelector(href);
+      if (!el) return;
+      e.preventDefault();
+      lenis.scrollTo(href === "#inicio" ? 0 : (el as HTMLElement), { offset: -76, duration: 1.4 });
+    };
+    document.addEventListener("click", onClick);
 
     return () => {
       cancelAnimationFrame(rafId);
-      document.removeEventListener("click", handleAnchorClick);
+      document.removeEventListener("click", onClick);
       lenis.destroy();
+      delete (window as unknown as { lenis?: Lenis }).lenis;
     };
   }, []);
 

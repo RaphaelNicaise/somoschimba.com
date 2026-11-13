@@ -5,19 +5,19 @@ import "./globals.css";
 
 const archivo = Archivo({
   subsets: ["latin"],
-  variable: "--font-sans",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-archivo",
   style: ["normal", "italic"],
+  axes: ["wdth"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Chimba — Creative Agency | somoschimba.com",
-  description: "Láminas limpias en gris, tipografía grotesca muy pesada en azul y resaltador verde. Creamos marcas para que la gente las elija.",
+  title: "Chimba Creative Agency",
+  description: "Chimba es una agencia creativa: rebranding, identidad, key visual, redes y dirección de arte.",
   keywords: ["Chimba", "Creative Agency", "Branding", "Rebranding", "Key Visual", "Identidad de Marca"],
   openGraph: {
-    title: "Chimba — Creative Agency",
-    description: "Estudio de diseño y estrategia visual. Buenos Aires.",
+    title: "Chimba Creative Agency",
+    description: "Diseñamos marcas que la gente elige.",
     url: "https://somoschimba.com",
     siteName: "Chimba",
     locale: "es_AR",
@@ -27,16 +27,13 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#2B4991",
+  viewportFit: "cover",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="es" className={archivo.variable}>
-      <body className="ch-root">
+      <body>
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
