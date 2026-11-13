@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300..900;1,300..900&display=swap");
+
+/* Chimba — componentes web (CSS puro, prefijo .ch-) */
+
+.ch-root, body {
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Resaltador ---------- */
+.ch-mark {
+  background: var(--highlight);
+  color: var(--on-highlight);
+  padding: 0 0.14em 0.02em;
+  margin: 0 -0.04em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+.ch-mark--italic { font-style: italic; font-weight: 300; }
+.ch-mark--inverse { background: var(--highlight-inverse); color: var(--on-highlight-inverse); }
+
+/* ---------- Etiqueta inclinada ---------- */
+.ch-tag {
+  position: relative;
+  isolation: isolate;
+  display: inline-block;
+  font: 800 15px/18px var(--font-sans);
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--on-highlight);
+  padding: 6px 10px 4px;
+}
+.ch-tag::before {
+  content: "";
+  position: absolute;
+  inset: 0 -2px 6px -4px;
+  background: var(--highlight);
+  transform: rotate(-1.6deg);
+  z-index: -1;
+}
+.ch-tag--lg { font-size: 34px; line-height: 38px; padding: 8px 14px 4px; letter-spacing: -0.03em; }
+
+/* ---------- Botones ---------- */
+.ch-btn {
+  display: inline-flex; align-items: center; gap: var(--space-2);
+  font: 700 16px/20px var(--font-sans);
+  letter-spacing: -0.01em;
+  padding: 14px 26px;
+  border: var(--stroke-bold) solid transparent;
+  border-radius: var(--radius-none);
+  cursor: pointer; text-decoration: none;
+  transition: background-color .15s ease, color .15s ease, transform .15s ease;
+}
+.ch-btn:focus-visible { outline: var(--stroke-bold) solid var(--line-strong); outline-offset: 3px; }
+.ch-btn--primary { background: var(--chimba-blue); color: var(--white); }
+.ch-btn--primary:hover { background: var(--chimba-green); color: var(--chimba-blue); }
+.ch-btn--highlight { background: var(--highlight); color: var(--on-highlight); }
+.ch-btn--highlight:hover { background: var(--chimba-blue); color: var(--chimba-green); }
+.ch-btn--line { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.ch-btn--line:hover { background: var(--highlight); color: var(--on-highlight); border-color: var(--highlight); }
+.ch-btn--sticker {
+  background: var(--surface-raised); color: var(--ink);
+  border-radius: var(--radius-pill);
+  padding: 8px 22px 8px 10px;
+  box-shadow: var(--shadow-sticker);
+}
+.ch-btn--sticker img { width: 56px; height: auto; transition: transform .2s ease; }
+.ch-btn--sticker:hover img { transform: rotate(-8deg) scale(1.08); }
+.ch-btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* ---------- Sticker de la manito ---------- */
+.ch-sticker {
+  display: inline-block;
+  width: 120px; height: auto;
+  filter:
+    drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff)
+    drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff)
+    drop-shadow(0 6px 8px rgba(10, 18, 34, 0.25));
+  transform: rotate(-6deg);
+}
+.ch-sticker--sm { width: 64px; }
+.ch-sticker--lg { width: 220px; }
+
+/* ---------- Óvalo a mano ---------- */
+.ch-scribble { position: relative; display: inline-block; isolation: isolate; }
+.ch-scribble > .ch-scribble__stroke {
+  position: absolute; z-index: -1; pointer-events: none;
+  left: -18%; top: -38%; width: 136%; height: 176%;
+  object-fit: fill;
+}
+
+/* ---------- Hoja y recorridos ---------- */
+.ch-leaf {
+  width: 160px; aspect-ratio: 1;
+  border: var(--stroke-hair) solid var(--line);
+  border-radius: 0 var(--radius-leaf) 0 var(--radius-leaf);
+  transform: rotate(1deg);
+}
+.ch-leaf--blue { border-color: var(--chimba-blue); }
+.ch-leaf--fill { background: var(--chimba-green); border-color: var(--chimba-green); }
+.ch-track {
+  border: var(--stroke-hair) solid var(--line);
+  border-top: 0; border-right: 0;
+  border-bottom-left-radius: var(--radius-track);
+  pointer-events: none;
+}
+.ch-corner-block { background: var(--chimba-green); width: 96px; height: 56px; }
+
+/* ---------- Navegación ---------- */
+.ch-nav {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--space-5);
+  padding: var(--space-5) var(--space-7);
+  color: var(--accent);
+}
+.ch-nav__brand { font: 800 26px/1 var(--font-sans); letter-spacing: -0.03em; color: inherit; text-decoration: none; }
+.ch-nav__links { display: flex; gap: var(--space-6); list-style: none; margin: 0; padding: 0; }
+.ch-nav__links a { font: 500 16px/20px var(--font-sans); color: var(--ink); text-decoration: none; padding: 2px 4px; }
+.ch-nav__links a:hover, .ch-nav__links a[aria-current="page"] { background: var(--highlight); color: var(--on-highlight); }
+.ch-nav__meta { font: italic 300 18px/22px var(--font-sans); letter-spacing: -0.02em; }
+.ch-nav--photo { color: var(--on-photo-accent); }
+.ch-nav--photo .ch-nav__links a { color: var(--on-photo); }
+@media (max-width: 720px) {
+  .ch-nav { padding: var(--space-4); }
+  .ch-nav__links { display: none; }
+}
+
+/* ---------- Hero de portada (foto desenfocada) ---------- */
+.ch-hero {
+  position: relative; overflow: hidden; isolation: isolate;
+  min-height: 520px; display: flex; flex-direction: column;
+  background: var(--chimba-night);
+}
+.ch-hero__photo { position: absolute; inset: -24px; z-index: -2; background-size: cover; background-position: center; filter: blur(14px) saturate(.9); }
+.ch-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--scrim); }
+.ch-hero__body { margin-top: auto; padding: 0 var(--space-7) var(--space-7); max-width: 900px; margin-left: auto; }
+.ch-hero__title { margin: 0; font: 800 clamp(48px, 9vw, 120px)/0.88 var(--font-sans); letter-spacing: -0.03em; text-transform: uppercase; color: var(--on-photo-accent); }
+.ch-hero__title strong { display: block; font-weight: 800; font-size: 1.45em; color: var(--chimba-blue); }
+.ch-hero__rule { height: 0; border-top: var(--stroke-hair) solid var(--line); margin: var(--space-4) calc(-1 * var(--space-7)) var(--space-6) 6%; }
+.ch-hero__client { font: 400 20px/24px var(--font-sans); color: var(--on-photo-accent); text-align: right; }
+.ch-hero__client em { font-weight: 400; }
+
+/* ---------- Bloque manifiesto ---------- */
+.ch-statement { background: var(--surface); padding: var(--space-9) var(--space-7); }
+.ch-statement--brand { background: var(--surface-brand); }
+.ch-statement__text { margin: 0; max-width: 16ch; font: 700 clamp(40px, 6vw, 64px)/1.02 var(--font-sans); letter-spacing: -0.02em; color: var(--ink); }
+.ch-statement--brand .ch-statement__text { color: var(--on-brand); }
+.ch-statement__sign { display: flex; align-items: center; gap: var(--space-3); margin-top: var(--space-8); }
+.ch-statement__sign .ch-sticker { width: 72px; }
+.ch-statement__sign img.ch-logo { height: 40px; width: auto; }
+
+/* ---------- Tarjeta de caso ---------- */
+.ch-case {
+  position: relative; display: flex; flex-direction: column; gap: var(--space-4);
+  background: var(--surface-raised); color: var(--ink);
+  padding: var(--space-5); text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.ch-case:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
+.ch-case:focus-visible { outline: var(--stroke-bold) solid var(--line-strong); outline-offset: 3px; }
+.ch-case__media { aspect-ratio: 4 / 5; background: var(--chimba-night) center / cover no-repeat; position: relative; }
+.ch-case__collab { position: absolute; left: var(--space-4); bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-2); font: 800 22px/1 var(--font-sans); letter-spacing: -0.03em; color: var(--on-photo-accent); }
+.ch-case__collab .ch-sticker { width: 48px; }
+.ch-case__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-3); }
+.ch-case__client { margin: 0; font: 700 26px/1.15 var(--font-sans); letter-spacing: -0.01em; }
+.ch-case__year { font: italic 300 18px/22px var(--font-sans); color: var(--ink-muted); }
+.ch-case__tags { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+
+/* ---------- Título de sección (Key visual) ---------- */
+.ch-section-title { display: flex; align-items: center; gap: var(--space-5); margin: 0; }
+.ch-section-title::before { content: ""; flex: none; width: 104px; height: 64px; background: var(--chimba-green); }
+.ch-section-title__text { font: italic 400 40px/1.05 var(--font-sans); letter-spacing: -0.03em; color: var(--ink); }
+
+/* ---------- Galería de piezas ---------- */
+.ch-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: var(--space-5); }
+.ch-gallery img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; box-shadow: var(--shadow-card); }
+
+/* ---------- Footer ---------- */
+.ch-footer { background: var(--chimba-blue); color: var(--white); padding: var(--space-8) var(--space-7) var(--space-6); }
+.ch-footer__cta { margin: 0 0 var(--space-7); font: 700 clamp(36px, 5vw, 56px)/1.02 var(--font-sans); letter-spacing: -0.02em; }
+.ch-footer__cta .ch-mark { color: var(--chimba-blue); }
+.ch-footer__row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-5); border-top: var(--stroke-hair) solid var(--chimba-green); padding-top: var(--space-5); font: 400 15px/22px var(--font-sans); }
+.ch-footer a { color: var(--chimba-green); text-decoration: none; }
+.ch-footer a:hover { text-decoration: underline; }

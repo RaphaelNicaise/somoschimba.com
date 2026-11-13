@@ -1,0 +1,66 @@
+/* Chimba — generated from tokens.json */
+:root, [data-theme="light"] {
+  --chimba-blue: #2b4991;
+  --chimba-green: #68f293;
+  --chimba-gray: #e4e4e4;
+  --chimba-night: #0d1424;
+  --white: #ffffff;
+  --surface: #e4e4e4;
+  --surface-raised: #ffffff;
+  --surface-brand: #68f293;
+  --on-brand: #2b4991;
+  --ink: #2b4991;
+  --ink-muted: #4a5a80;
+  --accent: #2b4991;
+  --highlight: #68f293;
+  --on-highlight: #2b4991;
+  --highlight-inverse: #2b4991;
+  --on-highlight-inverse: #68f293;
+  --line: #68f293;
+  --line-strong: #2b4991;
+  --on-photo: #ffffff;
+  --on-photo-accent: #68f293;
+  --scrim: rgba(8, 12, 22, 0.55);
+  --client-logo-bg: #ffffff;
+  --shadow-card: 0 22px 28px -12px rgba(10, 18, 34, 0.45);
+  --shadow-sticker: 0 6px 10px rgba(10, 18, 34, 0.22);
+}
+[data-theme="dark"] {
+  --surface: #0d1424;
+  --surface-raised: #18223a;
+  --ink: #e4e4e4;
+  --ink-muted: #9aa6c2;
+  --accent: #68f293;
+  --line-strong: #68f293;
+  --client-logo-bg: #ffffff;
+}
+:root {
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 80px;
+  --space-9: 128px;
+  --radius-none: 0;
+  --radius-leaf: 45%;
+  --radius-track: 160px;
+  --radius-pill: 999px;
+  --stroke-hair: 2px;
+  --stroke-bold: 3px;
+  --font-sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.display-xl { font-family: var(--font-sans); font-size: 120px; line-height: 0.88; font-weight: 800; letter-spacing: -0.03em; }
+.display-l { font-family: var(--font-sans); font-size: 88px; line-height: 0.92; font-weight: 800; letter-spacing: -0.025em; }
+.headline { font-family: var(--font-sans); font-size: 64px; line-height: 1.02; font-weight: 700; letter-spacing: -0.02em; }
+.headline-italic { font-family: var(--font-sans); font-size: 64px; line-height: 1.02; font-weight: 300; letter-spacing: -0.02em; font-style: italic; }
+.title { font-family: var(--font-sans); font-size: 40px; line-height: 1.05; font-weight: 700; letter-spacing: -0.02em; }
+.title-italic { font-family: var(--font-sans); font-size: 40px; line-height: 1.05; font-weight: 400; letter-spacing: -0.03em; font-style: italic; }
+.subtitle { font-family: var(--font-sans); font-size: 26px; line-height: 1.15; font-weight: 700; letter-spacing: -0.01em; }
+.lead { font-family: var(--font-sans); font-size: 21px; line-height: 30px; font-weight: 400; }
+.body { font-family: var(--font-sans); font-size: 17px; line-height: 26px; font-weight: 400; }
+.label { font-family: var(--font-sans); font-size: 15px; line-height: 18px; font-weight: 800; letter-spacing: -0.01em; }
+.eyebrow { font-family: var(--font-sans); font-size: 13px; line-height: 16px; font-weight: 400; letter-spacing: 0.14em; }
+.meta { font-family: var(--font-sans); font-size: 18px; line-height: 22px; font-weight: 300; letter-spacing: -0.02em; font-style: italic; }
