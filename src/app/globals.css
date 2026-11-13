@@ -23,3 +23,14 @@ body {
   background: var(--highlight);
   color: var(--on-highlight);
 }
+
+/* Responsividad de navegación */
+@media (max-width: 768px) {
+  .nav-desktop-links {
+    display: none !important;
+  }
+  .nav-mobile-toggle {
+    display: inline-block !important;
+  }
+}
+
