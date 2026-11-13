@@ -45,13 +45,13 @@ body {
   color: var(--on-highlight);
 }
 
-/* Animación del óvalo a lápiz en el logo */
+/* Animación del óvalo a lápiz en el logo con múltiples vueltas */
 .ch-logo-scribble-container {
   position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 4px 10px;
+  padding: 6px 12px;
 }
 
 .ch-logo-scribble-svg {
@@ -60,8 +60,8 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
-  width: 140px;
-  height: 60px;
+  width: 150px;
+  height: 66px;
   overflow: visible;
   z-index: 2;
 }
@@ -72,10 +72,10 @@ body {
   stroke-width: 2.2;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 340;
-  stroke-dashoffset: 340;
+  stroke-dasharray: 850;
+  stroke-dashoffset: 850;
   opacity: 0;
-  transition: stroke-dashoffset 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.12s ease;
+  transition: stroke-dashoffset 0.38s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.15s ease;
 }
 
 .ch-logo-scribble-container:hover .ch-scribble-path {
@@ -83,86 +83,14 @@ body {
   opacity: 1;
 }
 
-/* Marquee editorial de colaboración */
-.ch-marquee-track {
-  display: flex;
-  width: max-content;
-  user-select: none;
+/* Tarjetas de servicios como hoja literal (.ch-leaf-card) */
+.ch-leaf-card {
+  transition: transform 0.26s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.26s ease;
 }
 
-.ch-marquee-content {
-  display: flex;
-  align-items: center;
-  gap: 36px;
-  animation: chMarqueeScroll 32s linear infinite;
-  padding-right: 36px;
-}
-
-.ch-marquee-track:hover .ch-marquee-content {
-  animation-play-state: paused;
-}
-
-@keyframes chMarqueeScroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-100%);
-  }
-}
-
-.ch-marquee-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 14px;
-  font-family: var(--font-sans);
-  font-weight: 800;
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  color: var(--ink-muted);
-  white-space: nowrap;
-}
-
-.ch-marquee-hand {
-  width: 30px !important;
-  display: inline-block;
-  transform: rotate(-6deg) scale(0.7);
-}
-
-.ch-marquee-divider {
-  font-weight: 300;
-  color: var(--line);
-  margin-left: 12px;
-}
-
-/* Efecto hover refinado en tarjetas de servicio */
-.ch-service-card {
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.ch-service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 16px 32px rgba(13, 20, 36, 0.12) !important;
-  border-color: var(--chimba-blue) !important;
-}
-
-.ch-service-card .ch-service-leaf {
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease;
-}
-
-.ch-service-card:hover .ch-service-leaf {
-  transform: scale(1.15) rotate(6deg);
-  opacity: 1 !important;
-}
-
-.ch-service-card .ch-service-number {
-  transition: color 0.2s ease;
-}
-
-.ch-service-card:hover .ch-service-number {
-  color: var(--chimba-green);
+.ch-leaf-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 36px rgba(13, 20, 36, 0.12) !important;
 }
 
 /* Recorrido decorativo (.ch-track) */

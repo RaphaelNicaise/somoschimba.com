@@ -11,7 +11,12 @@ export function Footer() {
             <span className="ch-mark">Escribinos.</span>
           </p>
 
-          <Button href={`mailto:${AGENCY_INFO.email}`} variant="sticker">
+          <Button
+            href={AGENCY_INFO.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="sticker"
+          >
             Hablemos
           </Button>
         </div>
@@ -20,6 +25,9 @@ export function Footer() {
           <div style={{ display: "flex", gap: "36px", flexWrap: "wrap", alignItems: "center" }}>
             <a href={`mailto:${AGENCY_INFO.email}`} style={{ fontWeight: 700 }}>
               {AGENCY_INFO.email}
+            </a>
+            <a href={AGENCY_INFO.whatsapp} target="_blank" rel="noopener noreferrer">
+              WhatsApp
             </a>
             <a href={AGENCY_INFO.instagram} target="_blank" rel="noreferrer">
               Instagram

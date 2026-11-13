@@ -46,24 +46,23 @@ export function Navbar({ floating = true }: NavbarProps) {
           transition: "padding 0.2s ease",
         }}
       >
-        {/* Brand con óvalo a mano animado en hover */}
+        {/* Brand con óvalo a mano multi-vuelta animado en hover */}
         <Link
           href="/"
           className="ch-logo-scribble-container"
           style={{ textDecoration: "none" }}
           aria-label="Chimba Creative Agency"
         >
-          {/* SVG Óvalo con trazo a mano que se dibuja al hacer hover */}
+          {/* SVG Óvalo con múltiples vueltas que simula el boceto real */}
           <svg
             className="ch-logo-scribble-svg"
-            viewBox="0 0 140 60"
+            viewBox="0 0 144 64"
             fill="none"
             aria-hidden="true"
           >
-            {/* Trazo orgánico irregular tipo lápiz */}
             <path
               className="ch-scribble-path"
-              d="M 18,31 C 15,14 42,9 76,9 C 114,9 133,18 132,32 C 131,46 102,52 64,51 C 24,50 9,43 12,28 C 14,19 32,13 54,12"
+              d="M 18,34 C 15,16 42,8 76,8 C 114,8 136,18 135,33 C 133,48 102,55 64,54 C 24,53 8,44 11,27 C 14,13 46,6 84,6 C 122,6 140,19 138,35 C 136,51 98,56 52,55 C 15,54 5,42 12,24 C 18,10 52,5 92,6 C 126,7 139,21 134,36 C 128,51 86,55 58,54"
             />
           </svg>
 
@@ -124,10 +123,12 @@ export function Navbar({ floating = true }: NavbarProps) {
           ))}
         </div>
 
-        {/* Acciones de la derecha */}
+        {/* Acciones de la derecha: botón WhatsApp */}
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
           <a
-            href="#contacto"
+            href={AGENCY_INFO.whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
             className="nav-cta-btn"
             style={{
               fontFamily: "var(--font-sans)",
@@ -202,10 +203,12 @@ export function Navbar({ floating = true }: NavbarProps) {
           ))}
           <div style={{ marginTop: "16px", paddingTop: "16px", borderTop: "1px solid rgba(255,255,255,0.2)" }}>
             <a
-              href={`mailto:${AGENCY_INFO.email}`}
+              href={AGENCY_INFO.whatsapp}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ color: "var(--chimba-green)", textDecoration: "none", fontWeight: 700 }}
             >
-              {AGENCY_INFO.email}
+              WhatsApp: Hablemos
             </a>
           </div>
         </div>

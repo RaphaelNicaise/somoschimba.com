@@ -9,6 +9,8 @@ interface ButtonProps {
   className?: string;
   onClick?: () => void;
   disabled?: boolean;
+  target?: string;
+  rel?: string;
 }
 
 export function Button({
@@ -18,6 +20,8 @@ export function Button({
   className = "",
   onClick,
   disabled,
+  target,
+  rel,
 }: ButtonProps) {
   const variantClass =
     variant === "primary"
@@ -47,7 +51,7 @@ export function Button({
 
     if (href) {
       return (
-        <Link href={href} className={combinedClass}>
+        <Link href={href} target={target} rel={rel} className={combinedClass}>
           {content}
         </Link>
       );
@@ -62,7 +66,7 @@ export function Button({
 
   if (href) {
     return (
-      <Link href={href} className={combinedClass}>
+      <Link href={href} target={target} rel={rel} className={combinedClass}>
         {children}
       </Link>
     );

@@ -1,6 +1,5 @@
 import { Navbar } from "@/components/ui/Navbar";
 import { Hero } from "@/components/sections/Hero";
-import { CollabMarquee } from "@/components/sections/CollabMarquee";
 import { Statement } from "@/components/sections/Statement";
 import { CaseGrid } from "@/components/sections/CaseGrid";
 import { BrandInterlude } from "@/components/sections/BrandInterlude";
@@ -12,7 +11,6 @@ export default function HomePage() {
     <main>
       <Navbar floating />
       <Hero />
-      <CollabMarquee />
       <Statement />
 
       {/* Recorrido conectivo (.ch-track) característico de Chimba */}
