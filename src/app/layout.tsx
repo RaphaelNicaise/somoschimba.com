@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo } from "next/font/google";
+import { SmoothScroll } from "@/components/providers/SmoothScroll";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -35,7 +36,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={archivo.variable}>
-      <body className="ch-root">{children}</body>
+      <body className="ch-root">
+        <SmoothScroll>{children}</SmoothScroll>
+      </body>
     </html>
   );
 }

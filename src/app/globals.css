@@ -10,6 +10,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Lenis smooth scroll styles */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -62,6 +83,58 @@ body {
   opacity: 1;
 }
 
+/* Marquee editorial de colaboración */
+.ch-marquee-track {
+  display: flex;
+  width: max-content;
+  user-select: none;
+}
+
+.ch-marquee-content {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  animation: chMarqueeScroll 32s linear infinite;
+  padding-right: 36px;
+}
+
+.ch-marquee-track:hover .ch-marquee-content {
+  animation-play-state: paused;
+}
+
+@keyframes chMarqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.ch-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+  white-space: nowrap;
+}
+
+.ch-marquee-hand {
+  width: 30px !important;
+  display: inline-block;
+  transform: rotate(-6deg) scale(0.7);
+}
+
+.ch-marquee-divider {
+  font-weight: 300;
+  color: var(--line);
+  margin-left: 12px;
+}
+
 /* Efecto hover refinado en tarjetas de servicio */
 .ch-service-card {
   transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
@@ -90,6 +163,17 @@ body {
 
 .ch-service-card:hover .ch-service-number {
   color: var(--chimba-green);
+}
+
+/* Recorrido decorativo (.ch-track) */
+.ch-track-connector {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: -32px auto 0;
+  pointer-events: none;
+  overflow: visible;
+  height: 80px;
 }
 
 /* Responsividad de navegación */
