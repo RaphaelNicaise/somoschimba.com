@@ -16,6 +16,9 @@ export const A = {
 } as const;
 
 export const CONTACT = {
+  /** Número de WhatsApp al que llegan los mensajes del formulario: código de país, sin + ni espacios. */
+  whatsapp: "5492916438226",
+  whatsappLabel: "+54 9 2916 43-8226",
   email: "hola@somoschimba.com",
   instagram: "https://instagram.com/somoschimba",
   instagramHandle: "@somoschimba",

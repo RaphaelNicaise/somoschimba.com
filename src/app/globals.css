@@ -258,10 +258,9 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .chip span { display: inline-block; font: 600 15px/1 var(--font-sans); padding: 9px 12px; border: 2px solid rgba(255, 255, 255, .55); cursor: pointer; transition: background-color .15s, color .15s; }
 .chip input:checked + span { background: var(--chimba-green); color: var(--chimba-blue); border-color: var(--chimba-green); }
 .chip input:focus-visible + span { outline: 3px solid var(--chimba-green); outline-offset: 2px; }
+.form__note { font-size: 15px; opacity: .85; margin: 0; }
+.form__note a { font-weight: 700; }
 .form__error { color: var(--chimba-green); font-weight: 600; font-size: 15px; }
-.out { border: 2px dashed var(--chimba-green); padding: var(--space-5); display: grid; gap: var(--space-4); }
-.out pre { margin: 0; white-space: pre-wrap; font: 400 15px/1.5 var(--font-sans); }
-.out__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); align-items: center; font-size: 15px; }
 
 .footer { margin-top: var(--space-9); border-top: 2px solid var(--chimba-green); padding-top: var(--space-5); display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-4); font-size: 15px; }
 .footer__brand { font: 800 22px/1 var(--font-sans); letter-spacing: -.03em; }

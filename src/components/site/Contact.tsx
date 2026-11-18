@@ -31,9 +31,8 @@ export function Contact({ brand, setBrand }: { brand: string; setBrand: (v: stri
   const [msg, setMsg] = useState("");
   const [needs, setNeeds] = useState<string[]>([]);
   const [error, setError] = useState("");
-  const [out, setOut] = useState("");
+  const [sentUrl, setSentUrl] = useState("");
   const mailRef = useRef<HTMLSpanElement>(null);
-  const outRef = useRef<HTMLPreElement>(null);
   const nameRef = useRef<HTMLInputElement>(null);
   const brandRef = useRef<HTMLInputElement>(null);
   const { label, copy } = useCopy();
@@ -42,17 +41,20 @@ export function Contact({ brand, setBrand }: { brand: string; setBrand: (v: stri
     e.preventDefault();
     const n = name.trim(), b = brand.trim();
     if (!n || !b) {
-      setError("Completá tu nombre y el de tu marca para armar el mensaje.");
+      setError("Completá tu nombre y el de tu marca para mandar el mensaje.");
       (!n ? nameRef : brandRef).current?.focus();
       return;
     }
     setError("");
-    setOut(
+    const text =
       `Hola Chimba, soy ${n}, de ${b}.\n` +
-        (needs.length ? `Necesitamos: ${needs.join(", ")}.\n` : "") +
-        (msg.trim() ? `\n${msg.trim()}\n` : "") +
-        `\n¿Hablamos?`
-    );
+      (needs.length ? `Necesitamos: ${needs.join(", ")}.\n` : "") +
+      (msg.trim() ? `\n${msg.trim()}\n` : "") +
+      `\n¿Hablamos?`;
+    const url = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(text)}`;
+    setSentUrl(url);
+    const win = window.open(url, "_blank", "noopener");
+    if (!win) window.location.href = url;
   };
 
   return (
@@ -76,6 +78,12 @@ export function Contact({ brand, setBrand }: { brand: string; setBrand: (v: stri
                   <button className="copy" type="button" onClick={() => copy("mail", CONTACT.email, mailRef.current)}>
                     {label.mail || "Copiar"}
                   </button>
+                </dd>
+              </div>
+              <div>
+                <dt>WhatsApp</dt>
+                <dd>
+                  <a href={`https://wa.me/${CONTACT.whatsapp}`} target="_blank" rel="noopener">{CONTACT.whatsappLabel}</a>
                 </dd>
               </div>
               <div>
@@ -119,19 +127,15 @@ export function Contact({ brand, setBrand }: { brand: string; setBrand: (v: stri
             </div>
             {error && <p className="form__error" role="alert">{error}</p>}
             <div>
-              <button className="btn btn--green" type="submit">Armar el mensaje</button>
+              <button className="btn btn--green" type="submit">Enviar por WhatsApp</button>
             </div>
-            {out && (
-              <div className="out">
-                <pre ref={outRef}>{out}</pre>
-                <div className="out__actions">
-                  <button className="copy" type="button" onClick={() => copy("msg", out, outRef.current)}>
-                    {label.msg || "Copiar mensaje"}
-                  </button>
-                  <span>Pegalo en un mail a {CONTACT.email} o en un DM de Instagram.</span>
-                </div>
-              </div>
-            )}
+            <p className="form__note" role="status">
+              {sentUrl ? (
+                <>Abrimos WhatsApp con tu mensaje listo: solo tenés que tocar enviar. ¿No se abrió? <a href={sentUrl} target="_blank" rel="noopener">Abrilo acá</a>.</>
+              ) : (
+                <>Te abrimos WhatsApp con el mensaje armado para que lo envíes.</>
+              )}
+            </p>
           </form>
         </div>
         <footer className="footer">
