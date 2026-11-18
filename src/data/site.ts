@@ -11,6 +11,8 @@ export const A = {
   santarelliKv1: "/assets/Portfolio/santarelli-key-visual-1.webp",
   ferroCover: "/assets/Portfolio/ferrocargas-cover.webp",
   ferroMood: "/assets/Portfolio/ferrocargas-moodboard.webp",
+  aconquijaCover: "/assets/Portfolio/aconquija-cover.webp",
+  aconquijaLogo: "/assets/Clients/aconquija-logo.webp",
 } as const;
 
 export const CONTACT = {
@@ -32,6 +34,19 @@ export interface CaseStudy {
 }
 
 export const CASES: CaseStudy[] = [
+  {
+    id: "ferrocargas",
+    client: "Ferrocargas",
+    rest: "del Sur",
+    year: "2025",
+    tags: ["Redes", "Contenido"],
+    quote: "Cada carga que mueven, [[contada]] en redes.",
+    text: "Contenido para redes de una empresa de transporte de cargas: la flota, los trenes, las fechas patrias y la agenda ambiental del sector.",
+    imgs: [
+      [A.ferroCover, "Ferrocargas del Sur y Chimba"],
+      [A.ferroMood, "Publicaciones para redes"],
+    ],
+  },
   {
     id: "psl",
     client: "PSL",
@@ -61,17 +76,14 @@ export const CASES: CaseStudy[] = [
     ],
   },
   {
-    id: "ferrocargas",
-    client: "Ferrocargas",
-    rest: "del Sur",
-    year: "2025",
-    tags: ["Redes", "Contenido"],
-    quote: "Cada carga que mueven, [[contada]] en redes.",
-    text: "Contenido para redes de una empresa de transporte de cargas: la flota, los trenes, las fechas patrias y la agenda ambiental del sector.",
-    imgs: [
-      [A.ferroCover, "Ferrocargas del Sur y Chimba"],
-      [A.ferroMood, "Publicaciones para redes"],
-    ],
+    id: "aconquija",
+    client: "Aconquija",
+    rest: "Construcciones",
+    year: "2025/2026",
+    tags: ["Desarrollo web"],
+    quote: "Una web a la altura de [[sus obras.]]",
+    text: "Diseñamos y desarrollamos el sitio de una empresa de construcciones y servicios: qué hacen, sus obras y un contacto directo para pedir presupuesto.",
+    imgs: [[A.aconquijaCover, "Aconquija Construcciones y Servicios"]],
   },
   {
     id: "girotti",
@@ -93,9 +105,9 @@ export interface Service {
 }
 
 export const SERVICES: Service[] = [
-  { name: "Rebranding", tagline: "Tu marca evoluciona sin perder lo que la hace reconocible.", items: ["Diagnóstico de la marca actual", "Rediseño de logo", "Sistema visual", "Manual de marca"], cases: ["psl", "girotti"] },
-  { name: "Identidad de marca", tagline: "Logo, colores, tipografía y forma de hablar, pensados juntos desde cero.", items: ["Concepto", "Logo y variantes", "Paleta y tipografía", "Papelería"], cases: [] },
-  { name: "Key visual", tagline: "La imagen que ordena una campaña, un lanzamiento o un proyecto.", items: ["Pieza principal", "Adaptaciones a formatos", "Fichas y folletos", "Guía de aplicación"], cases: ["santarelli", "psl"] },
+  { name: "Identidad de marca", tagline: "Logo, colores, tipografía y forma de hablar, pensados juntos. Si tu marca ya existe, la hacemos evolucionar sin perder lo que la hace reconocible.", items: ["Concepto", "Logo y variantes", "Paleta y tipografía", "Manual de marca"], cases: ["psl", "girotti"] },
+  { name: "Desarrollo web", tagline: "Sitios rápidos, claros y fáciles de actualizar, diseñados con la misma mirada que tu marca.", items: ["Diseño de la web", "Desarrollo y publicación", "Versión para celular", "Formularios de contacto"], cases: ["aconquija"] },
   { name: "Redes y contenido", tagline: "Publicaciones con criterio de marca, todo el año.", items: ["Grilla y plantillas", "Fechas y campañas", "Textos", "Calendario de publicaciones"], cases: ["ferrocargas"] },
+  { name: "Meta Ads", tagline: "Campañas pagas en Instagram y Facebook para llegar a quien tiene que conocer tu marca.", items: ["Estrategia de campaña", "Piezas para anuncios", "Segmentación de públicos", "Seguimiento de resultados"], cases: [] },
   { name: "Dirección de arte", tagline: "Fotos, piezas y producción con una misma mirada.", items: ["Producción de fotos", "Tratamiento de imagen", "Diseño editorial", "Presentaciones"], cases: ["santarelli"] },
 ];

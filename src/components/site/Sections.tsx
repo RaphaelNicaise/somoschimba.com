@@ -13,6 +13,7 @@ export function Clients() {
           <li>Ferrocargas <em>del Sur</em></li>
           <li>PSL <em>Logistics</em></li>
           <li>Santarelli <em>Construcciones</em></li>
+          <li>Aconquija <em>Construcciones</em></li>
           <li>Girotti</li>
         </ul>
       </div>

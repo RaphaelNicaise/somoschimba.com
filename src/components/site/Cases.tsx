@@ -53,7 +53,7 @@ export function Cases() {
         <div className="stitle">
           <h2 id="casos-title">Casos</h2>
         </div>
-        <p className="lead">Cuatro marcas, cuatro problemas distintos. Tocá las láminas para ver cada caso completo.</p>
+        <p className="lead">Cinco marcas, cinco problemas distintos. Tocá las láminas para ver cada caso completo.</p>
         <div>
           {CASES.map((cs, i) => {
             const pics = cs.imgs.slice(0, 3);
