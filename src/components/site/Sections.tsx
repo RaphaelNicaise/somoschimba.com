@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { CASES, SERVICES } from "@/data/site";
+import { CASES, CLIENTS, SERVICES } from "@/data/site";
 import { Hand } from "@/components/bits";
 
 export function Clients() {
@@ -9,12 +9,17 @@ export function Clients() {
     <section className="clients" aria-label="Clientes">
       <div className="wrap clients__in">
         <p className="clients__label">Trabajamos con</p>
-        <ul>
-          <li>Ferrocargas <em>del Sur</em></li>
-          <li>PSL <em>Logistics</em></li>
-          <li>Santarelli <em>Construcciones</em></li>
-          <li>Aconquija <em>Construcciones</em></li>
-          <li>Girotti</li>
+        <ul className="clients__list">
+          {CLIENTS.map((c) => (
+            <li className="clients__item" key={c.id}>
+              <img
+                src={c.logo}
+                alt={c.name}
+                className={`clients__logo clients__logo--${c.id}${c.isWhiteFilter ? " clients__logo--invert" : ""}`}
+                loading="lazy"
+              />
+            </li>
+          ))}
         </ul>
       </div>
     </section>

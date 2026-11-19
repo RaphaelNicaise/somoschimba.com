@@ -62,7 +62,16 @@ export function Cases() {
               <article className="case" id={`caso-${cs.id}`} key={cs.id}>
                 <div>
                   <h3 className="case__collab">
-                    <ClientName client={cs.client} rest={cs.rest} /> <Hand alt="y" /> <Cw />
+                    {cs.logo ? (
+                      <img
+                        src={cs.logo}
+                        alt={`${cs.client} ${cs.rest}`.trim()}
+                        className={`case__logo case__logo--${cs.id}${cs.logoWhiteFilter ? " case__logo--invert" : ""}`}
+                      />
+                    ) : (
+                      <ClientName client={cs.client} rest={cs.rest} />
+                    )}{" "}
+                    <Hand alt="y" /> <Cw />
                   </h3>
                   <div className="case__tags">
                     {cs.tags.map((t) => (
@@ -110,7 +119,16 @@ export function Cases() {
           <div className="dlg__head">
             <div>
               <h2 id="dlg-title">
-                <ClientName client={c.client} rest={c.rest} /> <Hand alt="y" /> <Cw />
+                {c.logo ? (
+                  <img
+                    src={c.logo}
+                    alt={`${c.client} ${c.rest}`.trim()}
+                    className={`case__logo dlg__logo case__logo--${c.id}${c.logoWhiteFilter ? " case__logo--invert" : ""}`}
+                  />
+                ) : (
+                  <ClientName client={c.client} rest={c.rest} />
+                )}{" "}
+                <Hand alt="y" /> <Cw />
               </h2>
               <p className="dlg__sub">{c.text}</p>
             </div>

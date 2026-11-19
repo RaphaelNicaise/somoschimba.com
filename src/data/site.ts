@@ -12,7 +12,12 @@ export const A = {
   ferroCover: "/assets/Portfolio/ferrocargas-cover.webp",
   ferroMood: "/assets/Portfolio/ferrocargas-moodboard.webp",
   aconquijaCover: "/assets/Portfolio/aconquija-cover.webp",
+  // Logos de clientes
   aconquijaLogo: "/assets/Clients/aconquija-logo.webp",
+  ferrocargasLogo: "/assets/Clients/ferrocargassur.png",
+  santarelliLogo: "/assets/Clients/ms.png",
+  pslLogo: "/assets/Clients/psllogicists.png",
+  girottiLogo: "/assets/Clients/latinidegirottisincolor.png",
 } as const;
 
 export const CONTACT = {
@@ -24,10 +29,27 @@ export const CONTACT = {
   instagramHandle: "@somoschimba",
 };
 
+export interface ClientItem {
+  id: string;
+  name: string;
+  logo: string;
+  isWhiteFilter?: boolean;
+}
+
+export const CLIENTS: ClientItem[] = [
+  { id: "ferrocargas", name: "Ferrocargas del Sur", logo: A.ferrocargasLogo },
+  { id: "psl", name: "PSL Logistics", logo: A.pslLogo },
+  { id: "santarelli", name: "Santarelli Construcciones", logo: A.santarelliLogo },
+  { id: "aconquija", name: "Aconquija Construcciones", logo: A.aconquijaLogo, isWhiteFilter: true },
+  { id: "girotti", name: "Latini de Girotti", logo: A.girottiLogo },
+];
+
 export interface CaseStudy {
   id: string;
   client: string;
   rest: string;
+  logo: string;
+  logoWhiteFilter?: boolean;
   year: string;
   tags: string[];
   /** Frase del caso; las partes entre [[ ]] van resaltadas, entre [[_ _]] resaltadas en itálica. */
@@ -41,6 +63,7 @@ export const CASES: CaseStudy[] = [
     id: "ferrocargas",
     client: "Ferrocargas",
     rest: "del Sur",
+    logo: A.ferrocargasLogo,
     year: "2025",
     tags: ["Redes", "Contenido"],
     quote: "Cada carga que mueven, [[contada]] en redes.",
@@ -54,6 +77,7 @@ export const CASES: CaseStudy[] = [
     id: "psl",
     client: "PSL",
     rest: "Logistics",
+    logo: A.pslLogo,
     year: "2025/2026",
     tags: ["Rebranding", "Key visual", "Campaña"],
     quote: "Exploramos distintos enfoques para lograr una [[evolución]] en la identidad.",
@@ -69,6 +93,7 @@ export const CASES: CaseStudy[] = [
     id: "santarelli",
     client: "Santarelli",
     rest: "Construcciones",
+    logo: A.santarelliLogo,
     year: "2025",
     tags: ["Key visual", "Editorial"],
     quote: "Así comienza [[_todo._]]",
@@ -82,6 +107,8 @@ export const CASES: CaseStudy[] = [
     id: "aconquija",
     client: "Aconquija",
     rest: "Construcciones",
+    logo: A.aconquijaLogo,
+    logoWhiteFilter: true,
     year: "2025/2026",
     tags: ["Desarrollo web"],
     quote: "Una web a la altura de [[sus obras.]]",
@@ -92,6 +119,7 @@ export const CASES: CaseStudy[] = [
     id: "girotti",
     client: "Girotti",
     rest: "",
+    logo: A.girottiLogo,
     year: "2025",
     tags: ["Rebranding"],
     quote: "Cambiar el logo puede [[_cambiar mucho más_]] que un logo.",
