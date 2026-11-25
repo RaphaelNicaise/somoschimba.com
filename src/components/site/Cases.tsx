@@ -87,8 +87,8 @@ export function Cases() {
                 </div>
                 <button className="case__media" type="button" aria-label={`Ver las láminas de ${cs.client} ${cs.rest}`} onClick={(e) => open(i, e.currentTarget)}>
                   <span className={`pile${pileCls}`}>
-                    {pics.map(([src]) => (
-                      <img key={src} src={src} alt="" />
+                    {pics.map(([src, cap]) => (
+                      <img key={src} src={src} alt={`${cs.client} ${cs.rest}: ${cap}`.replace("  ", " ")} loading="lazy" decoding="async" width={1500} height={2000} />
                     ))}
                   </span>
                 </button>
@@ -137,7 +137,7 @@ export function Cases() {
           <div className="strip" ref={strip} tabIndex={0} aria-label="Láminas del caso">
             {c.imgs.map(([src, cap]) => (
               <figure key={src}>
-                <img src={src} alt={cap} />
+                <img src={src} alt={`${c.client} ${c.rest}: ${cap}`.replace("  ", " ")} loading="lazy" decoding="async" width={1500} height={2000} />
                 <figcaption>{cap}</figcaption>
               </figure>
             ))}

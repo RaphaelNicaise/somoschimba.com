@@ -6,13 +6,13 @@ export function Cw({ children = "Chimba", className = "", drawn = false }: { chi
   return (
     <span className={`cw${drawn ? " is-drawn" : ""}${className ? " " + className : ""}`}>
       {children}
-      <img className="cw__oval" src={A.oval} alt="" />
+      <img className="cw__oval" src={A.oval} alt="" loading="lazy" decoding="async" />
     </span>
   );
 }
 
 export function Hand({ alt = "", className = "", style }: { alt?: string; className?: string; style?: React.CSSProperties }) {
-  return <img className={`sticker${className ? " " + className : ""}`} src={A.hand} alt={alt} style={style} />;
+  return <img className={`sticker${className ? " " + className : ""}`} src={A.hand} alt={alt} style={style} loading="lazy" decoding="async" width={1158} height={702} />;
 }
 
 /** Convierte "texto [[resaltado]] y [[_itálica resaltada_]]" en spans .mark. */

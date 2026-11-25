@@ -17,7 +17,7 @@ export function Hero() {
       <div className="wrap hx__body">
         <div className="logo">
           <Cw drawn={drawn}>
-            <img className="wm" src={A.wordmark} alt="Chimba" />
+            <img className="wm" src={A.wordmark} alt="Chimba" width={1026} height={266} fetchPriority="high" />
             <span className="wm-txt" aria-hidden="true">Chimba</span>
           </Cw>
           <p className="ag">CREATIVE AGENCY</p>
@@ -25,6 +25,9 @@ export function Hero() {
         <h1 className="sub" id="hero-title">
           Diseñamos marcas que la gente <span className="mark mark--it">elige.</span>
         </h1>
+        <p className="hx__lead">
+          Agencia creativa en Argentina: identidad de marca, desarrollo web, redes, Meta Ads y dirección de arte.
+        </p>
         <div className="ctas">
           <a className="btn btn--primary" href="#casos">Ver casos</a>
           <a className="btn btn--line" href="#contacto">Hablemos</a>

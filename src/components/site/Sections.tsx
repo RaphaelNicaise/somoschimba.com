@@ -17,6 +17,7 @@ export function Clients() {
                 alt={c.name}
                 className={`clients__logo clients__logo--${c.id}${c.isWhiteFilter ? " clients__logo--invert" : ""}`}
                 loading="lazy"
+                decoding="async"
               />
             </li>
           ))}
@@ -64,10 +65,12 @@ export function Services() {
             const isOpen = open.has(i);
             return (
               <li className={`svc${isOpen ? " is-open" : ""}`} key={s.name}>
-                <button className="svc__btn" type="button" aria-expanded={isOpen} aria-controls={`svc-${i}`} id={`svc-b-${i}`} onClick={() => toggle(i)}>
-                  <span className="svc__name"><span>{s.name}</span></span>
-                  <span className="svc__icon" aria-hidden="true" />
-                </button>
+                <h3 className="svc__h">
+                  <button className="svc__btn" type="button" aria-expanded={isOpen} aria-controls={`svc-${i}`} id={`svc-b-${i}`} onClick={() => toggle(i)}>
+                    <span className="svc__name"><span>{s.name}</span></span>
+                    <span className="svc__icon" aria-hidden="true" />
+                  </button>
+                </h3>
                 <div className="svc__body" id={`svc-${i}`} role="region" aria-labelledby={`svc-b-${i}`} inert={!isOpen}>
                   <div className="svc__inner">
                     <div className="svc__cols">

@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Archivo } from "next/font/google";
 import { SmoothScroll } from "@/components/providers/SmoothScroll";
+import { DESCRIPTION, SHARE_DESCRIPTION, SHARE_TITLE, SITE_NAME, SITE_URL, TITLE, structuredData } from "@/data/seo";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -12,17 +13,34 @@ const archivo = Archivo({
 });
 
 export const metadata: Metadata = {
-  title: "Chimba Creative Agency",
-  description: "Chimba es una agencia creativa: rebranding, identidad, key visual, redes y dirección de arte.",
-  keywords: ["Chimba", "Creative Agency", "Branding", "Rebranding", "Key Visual", "Identidad de Marca"],
-  openGraph: {
-    title: "Chimba Creative Agency",
-    description: "Diseñamos marcas que la gente elige.",
-    url: "https://somoschimba.com",
-    siteName: "Chimba",
-    locale: "es_AR",
-    type: "website",
+  metadataBase: new URL(SITE_URL),
+  title: TITLE,
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: "Agencia creativa",
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 },
   },
+  openGraph: {
+    type: "website",
+    url: "/",
+    siteName: SITE_NAME,
+    locale: "es_AR",
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SHARE_TITLE,
+    description: SHARE_DESCRIPTION,
+  },
+  formatDetection: { telephone: false, email: false, address: false },
 };
 
 export const viewport: Viewport = {
@@ -32,8 +50,12 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="es" className={archivo.variable}>
+    <html lang="es-AR" className={archivo.variable}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData()).replace(/</g, "\\u003c") }}
+        />
         <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
